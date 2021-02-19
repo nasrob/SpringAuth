@@ -15,7 +15,7 @@ public interface LdapAuthRepositoryCustom {
 	void deleteFromTemplate(LdapAuthUser ldapAuthUser);
 	void createByBindOperation(LdapAuthUser ldapAuthUser);
 	void deleteFromTemplateWithUnbind(String username);
-	void updateWithTempalte(LdapAuthUser ldapAuthUser);
+	void updateWithTemplate(LdapAuthUser ldapAuthUser);
 	LdapAuthUser findByUid(String uid);
 	List<LdapAuthUser> findAllWithTemplate();
 	List<LdapAuthUser> findBySurname(String surname);
