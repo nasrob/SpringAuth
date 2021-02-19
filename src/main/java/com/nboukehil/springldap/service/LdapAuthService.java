@@ -1,5 +1,6 @@
 package com.nboukehil.springldap.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.naming.Name;
@@ -12,6 +13,7 @@ import org.springframework.ldap.support.LdapNameBuilder;
 import org.springframework.stereotype.Service;
 
 import com.nboukehil.springldap.model.LdapAuthUser;
+import com.nboukehil.springldap.model.LdapGrantedAuthority;
 import com.nboukehil.springldap.repository.LdapAuthRepository;
 
 @Service
@@ -58,5 +60,25 @@ public class LdapAuthService {
 		} else {
 			logger.info("User with username " + userName + " does not exist ");
 		}
+	}
+	
+	public void deleteWithTemplate() {
+		ldapAuthRepository.deleteFromTemplate(null);
+	}
+	
+	public void createUserWithLdapTemplate() {
+		ldapAuthRepository.create(null);
+	}
+	
+	public boolean authenticateLdapUserWithContext(String username, String password) {
+		return ldapAuthRepository.authenticateLdapUserWithContext(username, password);
+	}
+	
+	public boolean authenticateLdapUserWithLdapQuery(String username, String password) {
+		return ldapAuthRepository.authenticateLdapUserWithLdapQuery(username, password);
+	}
+	
+	public List<LdapGrantedAuthority> getUserAuthorities(String username) {
+		return ldapAuthRepository.getUserAuthorities(username);
 	}
 }

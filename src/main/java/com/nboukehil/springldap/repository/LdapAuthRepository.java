@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.nboukehil.springldap.model.LdapAuthUser;
 
 @Repository
-public interface LdapAuthRepository extends LdapRepository<LdapAuthUser> {
+public interface LdapAuthRepository extends LdapRepository<LdapAuthUser>, LdapAuthRepositoryCustom {
 
 }
