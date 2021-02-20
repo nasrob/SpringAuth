@@ -52,7 +52,7 @@ public class LdapDataConfig {
 	}
 
 	@Bean
-	private ContextSource getLdapContextSrc() {
+	public ContextSource getLdapContextSrc() {
 		LdapContextSource ldapContextSrc = new LdapContextSource();
 		ldapContextSrc.setUrl(ldapUrls);
 		ldapContextSrc.setUserDn(ldapManagerUserName);
