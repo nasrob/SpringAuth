@@ -55,12 +55,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 //		super.configure(http);		
 	}
-	/*
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
 		authManagerBuilder.ldapAuthentication()
 			.userDnPatterns(ldapAuthStructure.getUserDnPattern())
-			.userSearchBase(ldapAuthStructure.getGroupSearchBase())
+			.userSearchBase(ldapAuthStructure.getUserSearchBase())
+			.groupSearchBase(ldapAuthStructure.getGroupSearchBase())
+			.groupSearchFilter("member={0}").rolePrefix("")
 			.contextSource()
 			.url(ldapAuthStructure.getLdapUrl() + "/" + ldapAuthStructure.getLdapBase())
 			.managerDn(ldapAuthStructure.getLdapManagerDn())
@@ -72,7 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		logger.info("configure method called to build Authentication Manager ...");
 	}
-	*/
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		Map<String, PasswordEncoder> encoders = new HashMap<String, PasswordEncoder>();
