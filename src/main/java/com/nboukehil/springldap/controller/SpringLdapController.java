@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nboukehil.springldap.constant.LdapAuthConstant;
 import com.nboukehil.springldap.service.LdapAuthService;
@@ -45,6 +46,27 @@ public class SpringLdapController {
 		logger.info("user Page Method ");
 		setProcessingData(model, LdapAuthConstant.TITLE_USER_PAGE);
 		return "user-page";
+	}
+	
+	@GetMapping("/login")
+	public String showLoginPage(@RequestParam(value = "error", required = false) String error,
+								@RequestParam(value = "logout", required = false) String logout,
+								Model model) {
+		logger.info("Login Page Url ");
+		
+		if (error != null) {
+			model.addAttribute("error", "Invalid Credentials provided !!!");
+		}
+		
+		if (logout != null) {
+			model.addAttribute("message", "Logged Out");
+		}
+		
+		
+		setProcessingData(model, LdapAuthConstant.TITLE_LOGIN_PAGE);
+
+		
+		return "login";
 	}
 	
 	private void setProcessingData(Model model, String pageTitle) {
