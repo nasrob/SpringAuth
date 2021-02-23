@@ -45,8 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/", "/login").permitAll()
 			.antMatchers("/adminPage/").hasAnyAuthority("ADMIN")
 			.antMatchers("/userPage").hasAnyAuthority("USER")
-			.anyRequest().fullyAuthenticated().and()
-			.formLogin().loginPage("/login").permitAll()
+			.anyRequest().fullyAuthenticated()
+			.and()
+			.oauth2Login()
+			.loginPage("/login")//.permitAll()
 			.defaultSuccessUrl("/privatePage", true)
 			.failureUrl("/login?error=true").and()
 			.logout().permitAll().logoutSuccessUrl("/login?logout=true");
