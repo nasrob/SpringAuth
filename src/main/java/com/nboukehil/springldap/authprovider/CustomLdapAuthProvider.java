@@ -7,10 +7,12 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Component;
 
 import com.nboukehil.springldap.model.LdapGrantedAuthority;
 import com.nboukehil.springldap.service.LdapAuthService;
 
+@Component
 public class CustomLdapAuthProvider implements AuthenticationProvider{
 
 	@Autowired
