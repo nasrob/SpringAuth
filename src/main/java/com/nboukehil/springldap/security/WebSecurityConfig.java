@@ -47,17 +47,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/userPage").hasAnyAuthority("USER")
 			.anyRequest().fullyAuthenticated()
 			.and()
-			.oauth2Login()
-			.loginPage("/login")//.permitAll()
+			.oauth2Login().loginPage("/login")//.permitAll()
 			.defaultSuccessUrl("/privatePage", true)
-			.failureUrl("/login?error=true").and()
+			.failureUrl("/login?error=true")
+			.and()
 			.logout().permitAll().logoutSuccessUrl("/login?logout=true");
 		
 		logger.info("Configure method called to make resources secure ...");
 		
 //		super.configure(http);		
 	}
-	
+	/*
 	@Override
 	protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
 		authManagerBuilder.ldapAuthentication()
@@ -75,7 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordAttribute("userPassword");
 		
 		logger.info("configure method called to build Authentication Manager ...");
-	}
+	}*/
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
